@@ -1,0 +1,127 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Sql;
+using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+
+namespace prySchwartzComercio
+{
+    public class clsConexion
+    {
+        string cadenaConexion = "Server=localhost;Database=Comercio;Trusted_Connection=True;";
+        //conector
+        SqlConnection coneccionBaseDatos;
+
+        //comando
+        SqlCommand comandoBaseDatos;
+
+        public string nombreBaseDeDatos;
+
+
+        public void ConectarBD()
+        {
+            try
+            {
+                coneccionBaseDatos = new SqlConnection(cadenaConexion);
+
+                nombreBaseDeDatos = coneccionBaseDatos.Database;
+
+                coneccionBaseDatos.Open();
+
+                MessageBox.Show("Conectado a " + nombreBaseDeDatos);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Hay un error : " + error.Message);
+            }
+
+        }
+        public DataTable ejecutarConsulta(string consulta)
+        {
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+
+                    using (SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion))
+                    {
+                        adaptador.Fill(tabla);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar consulta: " + ex.Message);
+            }
+
+            return tabla;
+        }
+
+
+        public bool agregarProducto(string nombre, string descripcion, decimal precio, int stock, int categoriaId)
+        {
+            bool exito = false;
+
+            string consulta = "INSERT INTO Productos (Nombre, Descripcion, Precio, Stock, CategoriaId) " +
+                              "VALUES (@Nombre, @Descripcion, @Precio, @Stock, @CategoriaId)";
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+
+                    using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Nombre", nombre);
+                        comando.Parameters.AddWithValue("@Descripcion", descripcion);
+                        comando.Parameters.AddWithValue("@Precio", precio);
+                        comando.Parameters.AddWithValue("@Stock", stock);
+                        comando.Parameters.AddWithValue("@CategoriaId", categoriaId);
+
+                        int filasAfectadas = comando.ExecuteNonQuery();
+
+                        if (filasAfectadas > 0)
+                        {
+                            exito = true;
+                            MessageBox.Show("Producto agregado correctamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se agregó el producto.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el producto: " + ex.Message);
+            }
+
+            return exito;
+        }
+
+
+        //METODO PARA VER TODOS LOS PRODUCTOS
+        public DataTable obtenerProductos()
+        {
+            return ejecutarConsulta("SELECT * FROM Productos");
+        }
+
+        //METODO PARA VER TODOS LOS NOMBRES DE LOS PRODUCTOS
+
+        public DataTable obtenerNombres()
+        {
+            return ejecutarConsulta("SELECT Nombre FROM Productos");
+        }
+
+
+    }
+}

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using FontAwesome.Sharp;
+
 
 
 namespace prySchwartzComercio
@@ -121,6 +121,7 @@ namespace prySchwartzComercio
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
+            dgv.DataSource = null;
             // Cargar todos los productos en el DataGridView
             DataTable tabla = conexionBD.obtenerProductos();
             dgv.DataSource = tabla;

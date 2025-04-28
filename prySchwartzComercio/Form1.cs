@@ -31,7 +31,7 @@ namespace prySchwartzComercio
                 TextShade.WHITE);
 
 
-      
+
 
             dgv.BackgroundColor = Color.White;
             dgv.GridColor = Color.LightGray;

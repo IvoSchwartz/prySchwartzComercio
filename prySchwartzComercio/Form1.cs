@@ -9,14 +9,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using FontAwesome.Sharp;
+
 
 namespace prySchwartzComercio
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MaterialForm
     {
         public Form1()
         {
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.BlueGrey800, Primary.BlueGrey900,
+                Primary.BlueGrey500, Accent.LightBlue200,
+                TextShade.WHITE);
+
+
+      
+
+            dgv.BackgroundColor = Color.White;
+            dgv.GridColor = Color.LightGray;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(63, 81, 181);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.EnableHeadersVisualStyles = false;
+
+
         }
 
         //INSTANCIACION DE OBJETO DE CLASE CONEXION
@@ -41,20 +65,6 @@ namespace prySchwartzComercio
             conexionBD.ConectarBD();
         }
 
-        private void btnCarga_Click(object sender, EventArgs e)
-        {
-            // Cargar todos los productos en el DataGridView
-            DataTable tabla = conexionBD.obtenerProductos();
-            dgv.DataSource = tabla;
-        }
-
-        private void btnNombres_Click(object sender, EventArgs e)
-        {
-            // Cargar los nombres de los productos en el DataGridView
-            DataTable tablaNombres = conexionBD.obtenerNombres();
-            dgv.DataSource = tablaNombres;
-        }
-
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
             // Habilitar txtDescripcion si se ha ingresado un nombre
@@ -70,14 +80,8 @@ namespace prySchwartzComercio
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Habilitar numCodigo si se selecciona una categoría
-            
-            numPrecio.Enabled = true;
-        }
 
-        private void numCodigo_ValueChanged(object sender, EventArgs e)
-        {
-            // Habilitar numPrecio cuando se cambie el valor de numCodigo
-            
+            numPrecio.Enabled = true;
         }
 
         private void numPrecio_ValueChanged(object sender, EventArgs e)
@@ -92,7 +96,44 @@ namespace prySchwartzComercio
             btnAgregar.Enabled = true;
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+
+        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Rellenar los campos con los datos del producto seleccionado en el DataGridView
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgv.Rows[e.RowIndex];
+
+                numCodigo.Value = Convert.ToDecimal(fila.Cells["Codigo"].Value);
+                txtNombre.Text = fila.Cells["Nombre"].Value.ToString();
+                txtDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
+                numPrecio.Value = Convert.ToDecimal(fila.Cells["Precio"].Value);
+                numStock.Value = Convert.ToDecimal(fila.Cells["Stock"].Value);
+                cmbCategoria.SelectedItem = Convert.ToInt32(fila.Cells["CategoriaId"].Value);
+
+                // Habilitar botones de modificar y eliminar
+                btnModificar.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnAgregar.Enabled = false;
+            }
+        }
+
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            // Cargar todos los productos en el DataGridView
+            DataTable tabla = conexionBD.obtenerProductos();
+            dgv.DataSource = tabla;
+        }
+
+        private void materialButton2_Click(object sender, EventArgs e)
+        {
+            // Cargar los nombres de los productos en el DataGridView
+            DataTable tablaNombres = conexionBD.obtenerNombres();
+            dgv.DataSource = tablaNombres;
+        }
+
+        private void materialButton3_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Estás seguro que quieres agregar este registro?", "Confirmación", MessageBoxButtons.YesNo);
 
@@ -113,7 +154,7 @@ namespace prySchwartzComercio
             }
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void materialButton4_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Estás seguro que quieres modificar este registro?", "Confirmación", MessageBoxButtons.YesNo);
 
@@ -145,7 +186,7 @@ namespace prySchwartzComercio
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void materialButton5_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("¿Estás seguro que quieres eliminar este registro?", "Confirmación", MessageBoxButtons.YesNo);
 
@@ -162,25 +203,19 @@ namespace prySchwartzComercio
             }
         }
 
-        private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void materialButton6_Click(object sender, EventArgs e)
         {
-            // Rellenar los campos con los datos del producto seleccionado en el DataGridView
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow fila = dgv.Rows[e.RowIndex];
-
-                numCodigo.Value = Convert.ToDecimal(fila.Cells["Codigo"].Value);
-                txtNombre.Text = fila.Cells["Nombre"].Value.ToString();
-                txtDescripcion.Text = fila.Cells["Descripcion"].Value.ToString();
-                numPrecio.Value = Convert.ToDecimal(fila.Cells["Precio"].Value);
-                numStock.Value = Convert.ToDecimal(fila.Cells["Stock"].Value);
-                cmbCategoria.SelectedItem = Convert.ToInt32(fila.Cells["CategoriaId"].Value);
-
-                // Habilitar botones de modificar y eliminar
-                btnModificar.Enabled = true;
-                btnEliminar.Enabled = true;
-                btnAgregar.Enabled = false;
-            }
+            numCodigo.Value = 0;
+            numPrecio.Value = 10000;
+            numStock.Value = 0;
+            txtDescripcion.Text = "";
+            txtNombre.Text = "";
+            cmbCategoria.Text = "";
+            numPrecio.Enabled = false;
+            numStock.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnModificar.Enabled = false;
+            btnAgregar.Enabled = false;
         }
     }
 }

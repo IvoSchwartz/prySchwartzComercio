@@ -101,8 +101,6 @@ namespace prySchwartzComercio
         private void numStock_ValueChanged(object sender, EventArgs e)
         {
             ValidarFormulario();
-            
-
         }
 
 

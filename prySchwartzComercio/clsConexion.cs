@@ -13,7 +13,7 @@ namespace prySchwartzComercio
 {
     public class clsConexion
     {
-        string cadenaConexion = "Server=localhost;Database=Comercio;Trusted_Connection=True;";
+        string cadenaConexion = "Server=IVO\\SQLEXPRESS;Database=Comercio;Trusted_Connection=True;";
 
         SqlConnection coneccionBaseDatos;
 

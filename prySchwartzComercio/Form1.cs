@@ -43,8 +43,9 @@ namespace prySchwartzComercio
 
         }
 
-        //INSTANCIACION DE OBJETO DE CLASE CONEXION
+        //INSTANCIACION DE OBJETOS, DE VARIABLES GLOBALES,ETC
         clsConexion conexionBD = new clsConexion();
+        private bool modoEdicion = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -106,6 +107,7 @@ namespace prySchwartzComercio
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             // Rellenar los campos con los datos del producto seleccionado en el DataGridView
             if (e.RowIndex >= 0)
             {
@@ -123,6 +125,12 @@ namespace prySchwartzComercio
                 btnEliminar.Enabled = true;
                 btnAgregar.Enabled = false;
             }
+
+            modoEdicion = true;
+            btnModificar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnAgregar.Enabled = false;
+
         }
 
 
@@ -226,6 +234,7 @@ namespace prySchwartzComercio
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnAgregar.Enabled = false;
+            modoEdicion = false;
         }
 
 
@@ -237,7 +246,10 @@ namespace prySchwartzComercio
             bool stockValido = numStock.Value > 10 && numStock.Value < 5001 ;
             bool categoriaValida = cmbCategoria.SelectedIndex != -1;
 
-            btnAgregar.Enabled = nombreValido && descripcionValida && precioValido && stockValido && categoriaValida;
+            if (!modoEdicion)
+            {
+                btnAgregar.Enabled = nombreValido && descripcionValida && precioValido && stockValido && categoriaValida;
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

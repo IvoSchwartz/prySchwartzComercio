@@ -60,122 +60,111 @@
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(159, 87);
-            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgv.Location = new System.Drawing.Point(119, 71);
+            this.dgv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowTemplate.Height = 24;
-            this.dgv.Size = new System.Drawing.Size(856, 238);
+            this.dgv.Size = new System.Drawing.Size(642, 193);
             this.dgv.TabIndex = 0;
             this.dgv.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(276, 349);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Location = new System.Drawing.Point(207, 284);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(204, 22);
+            this.txtNombre.Size = new System.Drawing.Size(154, 20);
             this.txtNombre.TabIndex = 6;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(276, 381);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescripcion.Location = new System.Drawing.Point(207, 310);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(204, 52);
+            this.txtDescripcion.Size = new System.Drawing.Size(154, 43);
             this.txtDescripcion.TabIndex = 8;
             this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(156, 349);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(117, 284);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Nombre";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(156, 385);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(117, 313);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Descripción";
             // 
             // numCodigo
             // 
             this.numCodigo.Enabled = false;
-            this.numCodigo.Location = new System.Drawing.Point(676, 410);
-            this.numCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.numCodigo.Location = new System.Drawing.Point(507, 333);
             this.numCodigo.Name = "numCodigo";
-            this.numCodigo.Size = new System.Drawing.Size(93, 22);
+            this.numCodigo.Size = new System.Drawing.Size(70, 20);
             this.numCodigo.TabIndex = 11;
             // 
             // numStock
             // 
             this.numStock.Enabled = false;
-            this.numStock.Location = new System.Drawing.Point(922, 410);
-            this.numStock.Margin = new System.Windows.Forms.Padding(4);
+            this.numStock.Location = new System.Drawing.Point(692, 333);
             this.numStock.Name = "numStock";
-            this.numStock.Size = new System.Drawing.Size(93, 22);
+            this.numStock.Size = new System.Drawing.Size(70, 20);
             this.numStock.TabIndex = 14;
             this.numStock.ValueChanged += new System.EventHandler(this.numStock_ValueChanged);
             // 
             // numPrecio
             // 
             this.numPrecio.Enabled = false;
-            this.numPrecio.Location = new System.Drawing.Point(922, 350);
-            this.numPrecio.Margin = new System.Windows.Forms.Padding(4);
+            this.numPrecio.Location = new System.Drawing.Point(692, 284);
             this.numPrecio.Name = "numPrecio";
-            this.numPrecio.Size = new System.Drawing.Size(93, 22);
+            this.numPrecio.Size = new System.Drawing.Size(70, 20);
             this.numPrecio.TabIndex = 13;
             this.numPrecio.ValueChanged += new System.EventHandler(this.numPrecio_ValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(541, 410);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(406, 333);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
+            this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Codigo";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(804, 410);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(603, 333);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 18;
             this.label5.Text = "Stock";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(804, 349);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(603, 284);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 16);
+            this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Precio";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(541, 349);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(406, 284);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 16);
+            this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Categoría";
             // 
@@ -185,10 +174,9 @@
             this.cmbCategoria.Enabled = false;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cmbCategoria.Location = new System.Drawing.Point(676, 346);
-            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCategoria.Location = new System.Drawing.Point(507, 281);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(91, 24);
+            this.cmbCategoria.Size = new System.Drawing.Size(69, 21);
             this.cmbCategoria.TabIndex = 21;
             this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             // 
@@ -200,12 +188,12 @@
             this.btnVerTodos.Depth = 0;
             this.btnVerTodos.HighEmphasis = true;
             this.btnVerTodos.Icon = null;
-            this.btnVerTodos.Location = new System.Drawing.Point(13, 87);
-            this.btnVerTodos.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnVerTodos.Location = new System.Drawing.Point(10, 71);
+            this.btnVerTodos.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnVerTodos.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVerTodos.Name = "btnVerTodos";
             this.btnVerTodos.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnVerTodos.Size = new System.Drawing.Size(139, 33);
+            this.btnVerTodos.Size = new System.Drawing.Size(104, 27);
             this.btnVerTodos.TabIndex = 22;
             this.btnVerTodos.Text = "Ver Todos";
             this.btnVerTodos.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -221,12 +209,12 @@
             this.btnNombres.Depth = 0;
             this.btnNombres.HighEmphasis = true;
             this.btnNombres.Icon = null;
-            this.btnNombres.Location = new System.Drawing.Point(13, 132);
-            this.btnNombres.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnNombres.Location = new System.Drawing.Point(10, 107);
+            this.btnNombres.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnNombres.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnNombres.Name = "btnNombres";
             this.btnNombres.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnNombres.Size = new System.Drawing.Size(139, 33);
+            this.btnNombres.Size = new System.Drawing.Size(104, 27);
             this.btnNombres.TabIndex = 23;
             this.btnNombres.Text = "Ver Nombres";
             this.btnNombres.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -243,12 +231,12 @@
             this.btnAgregar.Enabled = false;
             this.btnAgregar.HighEmphasis = true;
             this.btnAgregar.Icon = null;
-            this.btnAgregar.Location = new System.Drawing.Point(1022, 87);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregar.Location = new System.Drawing.Point(766, 71);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnAgregar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAgregar.Size = new System.Drawing.Size(139, 33);
+            this.btnAgregar.Size = new System.Drawing.Size(104, 27);
             this.btnAgregar.TabIndex = 24;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -265,12 +253,12 @@
             this.btnModificar.Enabled = false;
             this.btnModificar.HighEmphasis = true;
             this.btnModificar.Icon = null;
-            this.btnModificar.Location = new System.Drawing.Point(1022, 132);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnModificar.Location = new System.Drawing.Point(766, 107);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnModificar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnModificar.Size = new System.Drawing.Size(139, 33);
+            this.btnModificar.Size = new System.Drawing.Size(104, 27);
             this.btnModificar.TabIndex = 25;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -287,12 +275,12 @@
             this.btnEliminar.Enabled = false;
             this.btnEliminar.HighEmphasis = true;
             this.btnEliminar.Icon = null;
-            this.btnEliminar.Location = new System.Drawing.Point(1022, 177);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEliminar.Location = new System.Drawing.Point(766, 144);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnEliminar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnEliminar.Size = new System.Drawing.Size(139, 33);
+            this.btnEliminar.Size = new System.Drawing.Size(104, 27);
             this.btnEliminar.TabIndex = 26;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -308,12 +296,12 @@
             this.btnLimpiar.Depth = 0;
             this.btnLimpiar.HighEmphasis = true;
             this.btnLimpiar.Icon = null;
-            this.btnLimpiar.Location = new System.Drawing.Point(1022, 222);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnLimpiar.Location = new System.Drawing.Point(766, 180);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnLimpiar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnLimpiar.Size = new System.Drawing.Size(139, 33);
+            this.btnLimpiar.Size = new System.Drawing.Size(104, 27);
             this.btnLimpiar.TabIndex = 27;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -323,9 +311,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 551);
+            this.ClientSize = new System.Drawing.Size(887, 448);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -345,8 +333,9 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.dgv);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(2, 52, 2, 2);
             this.Text = "Gestion de productos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);

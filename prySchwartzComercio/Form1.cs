@@ -48,52 +48,61 @@ namespace prySchwartzComercio
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Configuración del rango de precios en el NumericUpDown
+            
             numPrecio.Maximum = 1000000;
             numPrecio.Minimum = 10000;
+            numStock.Maximum = 5000;
+            numStock.Minimum = 10;
 
             numStock.Enabled = false;
 
-            // Agregar categorías al ComboBox
+            
             int[] vectorNumeros = { 1, 2, 3 };
             foreach (int numero in vectorNumeros)
             {
                 cmbCategoria.Items.Add(numero);
             }
 
-            // Conectar a la base de datos
+            
             conexionBD.ConectarBD();
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
-            // Habilitar txtDescripcion si se ha ingresado un nombre
             txtDescripcion.Enabled = !string.IsNullOrWhiteSpace(txtNombre.Text);
+            ValidarFormulario();
         }
 
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
-            // Habilitar cmbCategoria si se ha ingresado una descripción
+            ValidarFormulario();
             cmbCategoria.Enabled = !string.IsNullOrWhiteSpace(txtDescripcion.Text);
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Habilitar numCodigo si se selecciona una categoría
-
-            numPrecio.Enabled = true;
+            ValidarFormulario();
+            numPrecio.Enabled = cmbCategoria.SelectedIndex != -1;
         }
 
         private void numPrecio_ValueChanged(object sender, EventArgs e)
         {
-            // Habilitar numStock cuando se cambie el valor de numPrecio
-            numStock.Enabled = true;
+            // Habilita stock solo si precio es válido
+            if (numPrecio.Value > 10000 && numPrecio.Value <= 1000000)
+                numStock.Enabled = true;
+            else
+            {
+                numStock.Enabled = false;
+                numStock.Value = 10; 
+            }
+            ValidarFormulario();  
         }
 
         private void numStock_ValueChanged(object sender, EventArgs e)
         {
-            // Habilitar btnAgregar cuando se cambie el valor de numStock
-            btnAgregar.Enabled = true;
+            ValidarFormulario();
+            
+
         }
 
 
@@ -125,6 +134,8 @@ namespace prySchwartzComercio
             // Cargar todos los productos en el DataGridView
             DataTable tabla = conexionBD.obtenerProductos();
             dgv.DataSource = tabla;
+            dgv.Columns["Codigo"].DisplayIndex = 0;
+            dgv.Columns["Nombre"].DisplayIndex = 1;
         }
 
         private void materialButton2_Click(object sender, EventArgs e)
@@ -208,7 +219,7 @@ namespace prySchwartzComercio
         {
             numCodigo.Value = 0;
             numPrecio.Value = 10000;
-            numStock.Value = 0;
+            numStock.Value = 10;
             txtDescripcion.Text = "";
             txtNombre.Text = "";
             cmbCategoria.Text = "";
@@ -217,6 +228,23 @@ namespace prySchwartzComercio
             btnEliminar.Enabled = false;
             btnModificar.Enabled = false;
             btnAgregar.Enabled = false;
+        }
+
+
+        private void ValidarFormulario()
+        {
+            bool nombreValido = !string.IsNullOrWhiteSpace(txtNombre.Text);
+            bool descripcionValida = !string.IsNullOrWhiteSpace(txtDescripcion.Text);
+            bool precioValido = numPrecio.Value > 10000 && numPrecio.Value < 1000001;
+            bool stockValido = numStock.Value > 10 && numStock.Value < 5001 ;
+            bool categoriaValida = cmbCategoria.SelectedIndex != -1;
+
+            btnAgregar.Enabled = nombreValido && descripcionValida && precioValido && stockValido && categoriaValida;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

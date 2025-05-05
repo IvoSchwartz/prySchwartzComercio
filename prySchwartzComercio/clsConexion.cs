@@ -109,5 +109,93 @@ namespace prySchwartzComercio
         {
             return ejecutarConsulta("SELECT Nombre FROM Productos");
         }
+        public bool VerificarUsuarioExiste(string usuario)
+        {
+            bool existe = false;
+            string consulta = "SELECT COUNT(*) FROM Datos WHERE LOWER(Usuario) = @Usuario";
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar) { Value = usuario.ToLower().Trim() });
+
+                        int cantidad = (int)comando.ExecuteScalar();
+                        existe = cantidad > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar usuario: " + ex.Message);
+            }
+
+            return existe;
+        }
+
+        public bool RegistrarUsuario(string usuario, string contraseña)
+        {
+            if (VerificarUsuarioExiste(usuario))
+                return false;
+
+            bool exito = false;
+            string consulta = "INSERT INTO Datos (Usuario, Contraseña) VALUES (@Usuario, @Contraseña)";
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar) { Value = usuario.ToLower().Trim() });
+                        comando.Parameters.Add(new SqlParameter("@Contraseña", SqlDbType.VarChar) { Value = contraseña.Trim() });
+
+                        int filas = comando.ExecuteNonQuery();
+                        exito = filas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar usuario: " + ex.Message);
+            }
+
+            return exito;
+        }
+
+        public bool VerificarLogin(string usuario, string contraseña)
+        {
+            bool correcto = false;
+            string consulta = "SELECT COUNT(*) FROM Datos WHERE LOWER(Usuario) = @Usuario AND Contraseña = @Contraseña";
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+                {
+                    conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                    {
+                        comando.Parameters.Add(new SqlParameter("@Usuario", SqlDbType.VarChar) { Value = usuario.ToLower().Trim() });
+                        comando.Parameters.Add(new SqlParameter("@Contraseña", SqlDbType.VarChar) { Value = contraseña.Trim() });
+
+                        int cantidad = (int)comando.ExecuteScalar();
+                        correcto = cantidad > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al verificar login: " + ex.Message);
+            }
+
+            return correcto;
+        }
+
+
     }
+
 }
